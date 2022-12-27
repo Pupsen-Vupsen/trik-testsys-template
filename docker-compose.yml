@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  bot:
+    restart: always
+    image: karasss/trik-testsys-telegram-client:0.4.2
+    ports:
+      - "6000:6000"
+    command: python bot/main.py
+    volumes:
+      - ~/application/logs:/logs
+      - ~/application/data:/data
+      - ~/application/data/tasks:/tasks
+      - ~/application/secrets:/secrets
+    links:
+      - testsys:testsys
+
+  testsys:
+    restart: always
+    image: 5h15h4k1n9/trik-testsys-grading-system:lektorium-v1.1.0 # or your custom grading-system version
+    ports:
+      - "8080:8080"
+    volumes:
+      - ~/application/logs:/logs
+      - ~/application/data:/data
+      - ~/application/data/tasks:/tasks
+      - ~/application/data/submissions:/submissions
