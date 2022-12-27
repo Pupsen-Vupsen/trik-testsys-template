@@ -14,13 +14,13 @@ On your server must be installed next tools:
 
 ## Deployment steps
 
-- Navigate to the home directory: `cd`.
-- Clone the repository: `git clone https://github.com/Pupsen-Vupsen/trik-testsys-template.git`.
-- Rename directory with application: `mv trik-testsys-template application`.
-- Remove guide directories: `rm -r ./data/submissions/submission1-MUST_BE_REMOVED_BEFORE_START ./data/submissions/submission2-MUST_BE_REMOVED_BEFORE_START`.
-- Add important info for application runtime using the [section](#guide) below.
-- Start docker daemon.
-- Run `run_app.sh` script.
+1. Navigate to the home directory: `cd`.
+2. Clone the repository: `git clone https://github.com/Pupsen-Vupsen/trik-testsys-template.git`.
+3. Rename directory with application: `mv trik-testsys-template application`.
+4. Remove guide directories: `rm -r ./data/submissions/submission1-MUST_BE_REMOVED_BEFORE_START ./data/submissions/submission2-MUST_BE_REMOVED_BEFORE_START`.
+5. Add important info for application runtime using the [section](#guide) below.
+6. Start docker daemon.
+7. Run `run_app.sh` script.
 
 ## Guide
 
@@ -93,8 +93,9 @@ Testing System directory contains the following subdirectories:
 ### Important files
 
 Testing System contains the following important files:
-- `docker-compose.yml`: This file is used to run your application via docker-compose (see section [Docker-compose](#docker-compose)).
-- `bot-key.txt`: This file contains telegram bot token for bot working.
+- `docker-compose.yml`: This file is used to run your application via docker-compose. (See section [Docker-compose](#docker-compose))
+- `bot-key.txt`: This file contains telegram bot token for bot working. (Info should be added manually)
+- `admins.txt`: This file contains administrator ID in each line for bot notifications. (Info should be added manually)
 
 ### Tasks 
 
@@ -118,8 +119,8 @@ Every `tasks` subdirectory must be named like `<Number>:<Name>` where
 2. `<Name>` is string contains only letters, numbers and delimiters `,`, ` `, `.`, starts and ends with letter.
 
 Also, they must contain 
-1. `pin.txt`: The file which contains keys for hash and pin generators. The first number means count of pins, the second – first possible pin. 
-For example, this equals to pin range `123–1022`: 
+1. `pin.txt`: The file which contains keys pin generator. The first number means count of pins, the second – first possible pin. 
+For example, this equals to pin range from 123 to 1022: 
 ```
 900
 123
@@ -150,7 +151,7 @@ submissions
 
 Every submission after saving in Testing System gets its own directory which name is the submission ID, and contains
 the next files and directories:
-1. `hash_pin.txt`: File with generated hash (first line) and pin (second line).
+1. `hash_pin.txt`: File with generated hash (first line) and pin (second line). Info from this file is used to validate cheating.
 2. `pin.txt`: Copied pin file.
 3. `results`: Directory with result files for each test. For example:
 ```
